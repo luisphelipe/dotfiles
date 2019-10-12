@@ -221,6 +221,7 @@ exec --no-startup-id ~/.fehbg
 # screenshots
 bindsym --release Print exec scrot -m '/home/automata/Prints/%Y-%m-%d_%H:%M:%S.png'
 bindsym --release Shift+Print exec scrot -s '/home/automata/Prints/%Y-%m-%d_%H:%M:%S.png'
+bindsym --release Control+Print exec scrot -u '/home/automata/Prints/%Y-%m-%d_%H:%M:%S.png'
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
@@ -248,7 +249,7 @@ for_window [class="^.*"] border pixel 2
 
 gaps inner 10
 gaps outer 10
-# smart_gaps on
+smart_gaps on
 
 focus_on_window_activation none
 

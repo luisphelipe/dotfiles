@@ -3,11 +3,11 @@ URxvt.iso14755_52: true
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 
-URxvt.font: xft:Hack-Regular,size=13 
+URxvt.font: xft:Hack-Regular,size=13, xft:Inconsolata,size=15
 URxvt.scrollBar: false
 
-URxvt.transparent:   false
-URxvt.shading:       10
+! URxvt.transparent:   true
+! URxvt.shading:       10
 
 # Tmorrow Night
 *foreground:   #c5c8c6

@@ -20,10 +20,10 @@ let s:window = "4d5057"
 
 " Console 256 Colours
 if !has("gui_running")
-	let s:background = "303030"
-	let s:window = "5e5e5e"
-	let s:line = "3a3a3a"
-	let s:selection = "585858"
+        let s:background = "303030"
+        let s:window = "5e5e5e"
+        let s:line = "3a3a3a"
+        let s:selection = "585858"
 end
 
 hi clear
@@ -361,6 +361,13 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("diffAdded", s:green, "", "")
 	call <SID>X("diffRemoved", s:red, "", "")
 	call <SID>X("gitcommitSummary", "", "", "bold")
+        "
+        " YCM warnings
+        call <SID>X("YcmErrorSign", s:background, s:red, "")
+        call <SID>X("YcmWarningSign", s:background, s:blue, "")
+
+        call <SID>X("YcmErrorLine", s:background, s:red, "")
+        call <SID>X("YcmWarningLine", s:background, s:blue, "")
 
 	" Delete Functions
 	delf <SID>X
@@ -372,6 +379,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	delf <SID>grey_colour
 	delf <SID>grey_level
 	delf <SID>grey_number
+
 endif
 
 set background=dark

@@ -26,13 +26,12 @@ Plug 'scrooloose/nerdcommenter'
 
 Plug 'dense-analysis/ale'
 
-Plug 'mattn/emmet-vim'
+" Plug 'mattn/emmet-vim'
 
 Plug 'sirver/ultisnips'
 Plug 'mlaursen/vim-react-snippets'
 
 Plug 'elzr/vim-json'
-" Plug 'maxmellon/vim-jsx-pretty'
 Plug 'sheerun/vim-polyglot'
 
 Plug 'easymotion/vim-easymotion'
@@ -41,6 +40,11 @@ Plug 'tpope/vim-eunuch'
 Plug 'luochen1990/rainbow'
 
 Plug 'vim-scripts/loremipsum'
+
+Plug 'ycm-core/YouCompleteMe'
+Plug 'Valloric/ListToggle'
+
+Plug 'junegunn/goyo.vim'
 
 call plug#end()
  
@@ -226,7 +230,7 @@ let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 " remaping emmet <C-Y> to tab
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+" imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 " new keybinds for commenting text!
 nmap <C-_>   <Plug>NERDCommenterToggle
@@ -246,8 +250,8 @@ xnoremap <C-j> :<C-u>silent! '<,'>move'>+<CR>gv=gv
 
 " Trigger for snippets
 let g:UltiSnipsExpandTrigger="<S-tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " Easy-motion keybinds
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -279,5 +283,11 @@ colorscheme Tomorrow-Night
 " Rainbow
 let g:rainbow_active = 1
 
-" pandoc
-let g:pandoc#modules#disabled = ["folding", 'spell']
+" YCM
+nnoremap <F9> :YcmCompleter GetDoc<CR>
+let g:lt_location_list_toggle_map = '<F10>'
+nnoremap <F11> :YcmForceCompileAndDiagnostics<CR>
+
+" Goyo
+nnoremap <F12> :Goyo<CR>
+
