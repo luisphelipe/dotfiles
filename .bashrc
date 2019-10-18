@@ -172,6 +172,11 @@ alias report="vim ~/reports/$(date +%Y_%m_%d).txt"
 alias rem="vim ~/dailies/daily_remember.txt" 
 alias agua="echo 366-605-51"
 
+# MONITORS
+alias set="xrandr --output HDMI2 --auto --output eDP1 --off"
+alias set2="xrandr --output HDMI2 --auto --right-of eDP1"
+alias sx="xrandr --output HDMI2 --brightness" # sx .7
+
 # KEYBOARD LAYOUT
 alias int="setxkbmap -layout us -variant intl"
 alias eng="setxkbmap -layout us"
@@ -200,8 +205,6 @@ alias rn='react-native'
 
 # PROGRAMS
 alias qt='qutebrowser'
-alias postman='nohup /home/automata/Downloads/Postman/Postman & disown' 
-alias godot='nohup /home/automata/Downloads/Godot & disown' 
 alias discord='nohup /home/automata/Downloads/Discord/Discord & disown' 
 alias emu='nohup emulator @pp & disown' 
 alias studio='nohup android-studio & disown' 
@@ -214,7 +217,7 @@ function hashfilenames() {
 alias pape="feh --randomize --bg-fill ~/unfiltered_backgrounds/0919/* >> ~/feh-outpub.log 2>&1"
 alias record="ffmpeg -video_size 1366x768 -framerate 24 -f x11grab -i :0.0 $(date +%Y_%m_%d-%H:%M).mp4"
 alias record_gif="ffmpeg -video_size 1366x768 -framerate 24 -f x11grab -i :0.0 $(date +%Y_%m_%d-%H:%M).gif"
-alias preview="nohup feh --scale-down --auto-zoom . >/dev/null 2>&1 & disown"
+alias preview="feh --scale-down --auto-zoom "
 alias hashnames="hashfilenames"
 alias quteprivate="nohup qutebrowser www.google.com --temp-basedir -s content.private_browsing true > /dev/null 2>&1 & disown"
 alias cmatrix="cmatrix -b"
@@ -222,4 +225,5 @@ alias cmatrix="cmatrix -b"
 # alias pape="feh --randomize --bg-fill ~/Pictures/papes/* >> ~/feh-outpub.log 2>&1"
 # alias pape="feh --randomize --bg-max ~/Downloads/20images/* >> ~/feh-outpub.log 2>&a 1"
 
+# command for showind hardware info: dmidecode
 

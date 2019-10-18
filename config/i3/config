@@ -48,16 +48,16 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+Shift+h move left 50px
+bindsym $mod+Shift+j move down 50px
+bindsym $mod+Shift+k move up 50px
+bindsym $mod+Shift+l move right 50px
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+Left move left 50px
+bindsym $mod+Shift+Down move down 50px
+bindsym $mod+Shift+Up move up 50px
+bindsym $mod+Shift+Right move right 50px
 
 # split in horizontal orientation
 bindsym $mod+z split h
@@ -141,16 +141,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 100 px
+        bindsym j resize grow height 100 px
+        bindsym k resize shrink height 100 px
+        bindsym l resize grow width 100 px
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 100 px
+        bindsym Down resize grow height 100 px
+        bindsym Up resize shrink height 100 px
+        bindsym Right resize grow width 100 px
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -218,6 +218,9 @@ exec --no-startup-id clipit
 # background
 exec --no-startup-id ~/.fehbg
 
+# External monitor
+exec --no-startup-id xrandr --output HDMI2 --auto --output eDP1 --off
+
 # screenshots
 bindsym --release Print exec scrot -m '/home/automata/Prints/%Y-%m-%d_%H:%M:%S.png'
 bindsym --release Shift+Print exec scrot -s '/home/automata/Prints/%Y-%m-%d_%H:%M:%S.png'
@@ -248,8 +251,8 @@ hide_edge_borders both
 for_window [class="^.*"] border pixel 2
 
 gaps inner 10
-gaps outer 10
-smart_gaps on
+# gaps outer 10
 
 focus_on_window_activation none
+
 
