@@ -7,7 +7,6 @@
 " Plugins
 "
 
-execute pathogen#infect()
  
 call plug#begin()
 
@@ -45,6 +44,8 @@ Plug 'ycm-core/YouCompleteMe'
 Plug 'Valloric/ListToggle'
 
 Plug 'junegunn/goyo.vim'
+
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
  
