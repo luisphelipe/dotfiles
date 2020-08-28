@@ -1,9 +1,12 @@
+URxvt.letterSpace: 1
+URxvt.inputMethod: ibus
+URxvt.preeditType: OverTheSpot
 URxvt.iso14755: false
 URxvt.iso14755_52: true
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 
-URxvt.font: xft:Hack-Regular:size=15, xft:Inconsolata:size=15
+URxvt.font: xft:Hack-Regular:size=15, xft:HackGenConsole-Regular:size=15, xft:Inconsolata:size=15, 
 URxvt.scrollBar: false
 
 ! URxvt.transparent:   true

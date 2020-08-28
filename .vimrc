@@ -25,7 +25,7 @@ Plug 'scrooloose/nerdcommenter'
 
 Plug 'dense-analysis/ale'
 
-" Plug 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim'
 
 Plug 'sirver/ultisnips'
 Plug 'mlaursen/vim-react-snippets'
@@ -40,12 +40,16 @@ Plug 'luochen1990/rainbow'
 
 Plug 'vim-scripts/loremipsum'
 
-Plug 'ycm-core/YouCompleteMe'
+" Plug 'ycm-core/YouCompleteMe'
 Plug 'Valloric/ListToggle'
 
 Plug 'junegunn/goyo.vim'
 
 Plug 'tpope/vim-fugitive'
+
+" press <C-J> during INSERT mode
+Plug 'tyru/eskk.vim'
+
 
 call plug#end()
  
@@ -184,8 +188,8 @@ set expandtab
  
 " Indentation settings for using hard tabs for indent. Display tabs as
 " four characters wide.
-"set shiftwidth=4
-"set tabstop=4
+"set shiftwidth=2
+"set tabstop=2
  
  
 "------------------------------------------------------------
@@ -231,7 +235,7 @@ let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 " remaping emmet <C-Y> to tab
-" imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 " new keybinds for commenting text!
 nmap <C-_>   <Plug>NERDCommenterToggle
@@ -270,6 +274,8 @@ let g:EasyMotion_smartcase = 1
 
 " Remove ugly ale highlights
 let g:ale_set_highlights = 0
+let g:ale_enabled = 0
+let g:ale_pattern_options = {'\.asm$': {'ale_enabled': 0}}
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
 
@@ -283,12 +289,22 @@ colorscheme Tomorrow-Night
 
 " Rainbow
 let g:rainbow_active = 1
+let g:gitgutter_enabled = 0
 
 " YCM
-nnoremap <F9> :YcmCompleter GetDoc<CR>
-let g:lt_location_list_toggle_map = '<F10>'
-nnoremap <F11> :YcmForceCompileAndDiagnostics<CR>
+" nnoremap <F9> :YcmCompleter GetDoc<CR>
+" let g:lt_location_list_toggle_map = '<F10>'
+" nnoremap <F11> :YcmForceCompileAndDiagnostics<CR>
 
 " Goyo
 nnoremap <F12> :Goyo<CR>
+
+" F5 timestamp
+:nnoremap <F5> "=strftime("[%H:%M]")<CR>P
+:inoremap <F5> <C-R>=strftime("[%H:%M]")<CR>
+
+" F6 date
+:nnoremap <F6> "=strftime("[%Y-%m-%d  %H:%M]")<CR>P
+:inoremap <F6> <C-R>=strftime("[%Y-%m-%d  %H:%M]")<CR>
+
 
