@@ -194,19 +194,23 @@ bindsym $mod+q exec dmenu_run -fn 'Hack-Regular 11' -nb "$inactive-bg-color" -nf
 # finds out, if available)
 bar {
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
-	mode hide
-	hidden_state hide
-	modifier $mod
+
+        # mode hide
+        # modifier none
+
+        # hidden_state hide
+        # modifier $mod
+
         # tray_output none
 
-	colors {
-		background $inactive-bg-color
-	    	separator $text-color
-		#                  border             background         text
-		focused_workspace  $bg-color          $bg-color          $text-color
-		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-	}
+        colors {
+                background $inactive-bg-color
+                    separator $text-color
+                #                  border             background         text
+                focused_workspace  $bg-color          $bg-color          $text-color
+                inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+                urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+        }
 }
 
 # Additions
@@ -239,7 +243,7 @@ exec --no-startup-id ~/.fehbg
 
 # screenshots
 bindsym --release Print exec scrot -m '/home/automata/Prints/%Y-%m-%d_%H:%M:%S.png'
-bindsym --release Shift+Print exec scrot -s '/home/automata/Prints/%Y-%m-%d_%H:%M:%S.png'
+bindsym --release Shift+Print exec scrot -sf '/home/automata/Prints/%Y-%m-%d_%H:%M:%S.png'
 bindsym --release Control+Print exec scrot -u '/home/automata/Prints/%Y-%m-%d_%H:%M:%S.png'
 
 # Pulse Audio controls
@@ -262,6 +266,11 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # hide indicator
 hide_edge_borders both
+
+# open sfml apps in floating mode
+for_window [class="SFML"] floating enable, move absolute position center
+for_window [class="SFML-TRIANGLES"] floating enable, move absolute position center, sticky enable, move absolute position 30px 0px
+
 
 # i3-gaps config
 for_window [class="^.*"] border pixel 3

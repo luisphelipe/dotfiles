@@ -152,14 +152,16 @@ fi
 export YAOURT_COLORS="nb=1:pkg=1:ver=1;32:lver=1;45:installed=1;42:grp=1;34:od=1;41;5:votes=1;44:dsc=0:other=1;35"
 
 # ADD TO PATH
-source /home/automata/.profile
-export PATH="$HOME/.rbenv/bin:$PATH"
-# eval "$(rbenv init -)"
+# source /home/automata/.profile
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# # eval "$(rbenv init -)"
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+export GPG_TTY=$(tty)
+
 
 # utility for processing markdown into html and visualizing on qutebrowser
 function pm() {
@@ -181,11 +183,21 @@ function schedule_with_objective() {
   vim ~/schedules/$(date +%Y_%m_%d).txt
 }
 
+function report_local() {
+  file_name=$(date +%Y_%m_%d).txt
+  start_line="$(date +%Y-%m-%d) {{ RUSTLING }}"
+
+  if [[ ! -f $file_name ]]; then
+    echo $start_line > $file_name 
+    printf "\n" >> $file_name
+  fi 
+
+  vim $(date +%Y_%m_%d).txt
+}
 
 function report_with_title() {
   file_name=~/reports/$(date +%Y_%m_%d).txt
   start_line="$(date +%Y-%m-%d) {{ MISSING_TITLE }}"
-
 
   if [[ ! -f $file_name ]]; then
     echo $start_line > $file_name 
@@ -208,6 +220,16 @@ function new_competitive_solve() {
 
 function compile_c() {
   gcc $1.c -o ${2:-$1}
+}
+
+function safe_compile_c() {
+  gcc $1.c -o ${2:-$1} -Wall -Wextra -Werror -O2 -std=c99 -pedantic
+}
+
+function compile_sfml() {
+  g++ -c $1.cpp
+  # g++ -std=c++17 -Wshadow -Wall -c $1.cpp -g -fsanitize=address -fsanitize=undefined -D_GLIBCXX_DEBUG
+  g++ $1.o -o $1 -lsfml-graphics -lsfml-window -lsfml-system
 }
 
 function compile_cpp() {
@@ -243,6 +265,7 @@ function hash_filenames() {
 #STARTALIAS
 # JOURNALING
 alias report="report_with_title"
+alias rep="report_local"
 alias schedule="schedule_with_objective"
 alias write="cd ~/writings && vim"
 alias rtodo="vim ~/TODO"
@@ -258,8 +281,10 @@ alias reforcar="cat ~/reforcar"
 # MONITORS
 alias set='xrandr --output HDMI1 --auto --output eDP1 --off'
 alias set1='xrandr --output eDP1 --auto --output HDMI1 --off'
-# alias set2='xrandr --output eDP1 --auto --output HDMI1 --auto --right-of eDP1'
-alias set2='sh ~/.screenlayout/home.sh'
+alias set2='xrandr --output eDP1 --auto --output HDMI1 --auto --right-of eDP1'
+# alias set2='sh ~/.screenlayout/home.sh'
+alias set3='xrandr --output HDMI1 --rotate left --auto --output eDP1 --off'
+
 alias sx='xrandr --output HDMI1 --brightness' # sx .7
 
 # KEYBOARD LAYOUT
@@ -284,13 +309,17 @@ alias preventps="xset -dpms"
 alias n="nm-applet"
 
 # LAZY TYPER
+alias clear_nodemodules="sudo find ~/code -name 'node_modules' -type d -prune -print -exec rm -rf '{}' \;"
+alias quick="yarn run quick"
+alias restart="sudo rm -r .git && git init . && git add -A && git commit -a"
 alias fr="FLASK_APP=server.py FLASK_ENV=development flask run"
 alias te="./node_modules/mocha/bin/mocha --exit -r ts-node/register ./tests/setup.ts"
+alias js="yarn run test 2>/dev/null"
 alias cbra='cp -r ~/code/bloatless-cra'
 alias art='php artisan'
 alias phpunit='vendor/bin/phpunit'
 alias rt='clear && rspec'
-alias host='cd /srv/http'
+# alias host='cd /srv/http'
 alias cra='npx create-react-app --template typescript' 
 alias r='rails'
 alias eg='npx express-generator --no-view'
@@ -299,13 +328,15 @@ alias pdv='bash ~/scripting/pdv.sh'
 alias pt='python -m pytest -s'
 alias rf='gunicorn server:app --reload'
 alias rfs='gunicorn --worker-class eventlet -w 1 server:app --reload'
-alias sq='npx sequelize'
+alias sq='npx sequelize-cli'
 alias ap="git add . && git commit -m 'tmp' && git push heroku master"
 alias hb="heroku run bash -a pdv-exchange-dev"
+alias clear_js_bundle="npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res"
+alias clear_emu="sudo rm ~/.android/avd/qq.avd/*.lock"
 
 # DOCKER COMPOSE
 alias da='docker-compose run --rm app'
-alias du='docker-compose up'
+# alias du='docker-compose up'
 alias de='docker-compose run --rm app bundle exec'
 alias dr='docker-compose run --rm app bundle exec rails'
 alias dq='docker rm -fv $(sudo docker ps -aq)'
@@ -318,17 +349,21 @@ alias ds='\
           docker-compose up
 '
 
+# COMPILE CPP SFML
+alias csfml="compile_sfml"
+
 #STARTCOMP
 # COMPETITIVE PROGRAMMING
 alias c='compile_c' # c main; c main solution; c main brute;
+alias sc='safe_compile_c' # c main; c main solution; c main brute;
 
 alias cpp='compile_cpp'
 alias scpp='safe_compile_cpp'
 
 # alias tcp='source ./test.sh'
 alias tcp='./test.sh'
-alias ncp='cd ~/cp/2020 && new_competitive_solve'
-alias gcp='cd ~/cp/2020'
+alias ncp='cd ~/cp/2021 && new_competitive_solve'
+alias gcp='cd ~/cp/2021'
 
 alias compare='compare_output' # no output = no diff
 #ENDCOMP
@@ -336,7 +371,7 @@ alias compare='compare_output' # no output = no diff
 # PROGRAMS
 alias qt='qutebrowser'
 alias discord='nohup /home/automata/Downloads/Discord/Discord & disown' 
-alias emu='nohup emulator -memory 4000 @nexus & disown' 
+alias emu='nohup emulator -memory 4000 @qq & disown' 
 alias studio='nohup android-studio & disown' 
 alias dl="youtube-dl"
 
@@ -355,13 +390,19 @@ alias hfs="hash_filenames"
 alias pape="feh --randomize --bg-fill ~/unfiltered_backgrounds/0919/*"
 # alias pape="feh --randomize --bg-fill ~/filtered_backgrounds/*"
 alias upape="while [ true ]; do pape; sleep 1; done"
-alias record="ffmpeg -video_size 1366x768 -framerate 24 -f x11grab -i :0.0 $(date +%Y_%m_%d-%H:%M).mp4"
-alias record_gif="ffmpeg -video_size 1366x768 -framerate 24 -f x11grab -i :0.0 $(date +%Y_%m_%d-%H:%M).gif"
-alias record_gif="~/record_gif.sh"
+# alias record="ffmpeg -video_size 1366x768 -framerate 24 -f x11grab -i :0.0 ~/recordings$(date +%Y_%m_%d-%H:%M).mp4"
+alias record="ffmpeg -video_size 1920x1080 -framerate 24 -f x11grab -i :0.0 ~/recordings/$(date +%Y_%m_%d-%H:%M).mp4"
+# alias rec="ffmpeg -video_size 1920x1080 -framerate 25 -f x11grab -i :0.0 -f alsa -ac 2 -i hw:0 ~/recordings/$(date +%Y_%m_%d-%H:%M).mp4"
+alias rec="ffmpeg -y -f alsa -i hw:0 -f x11grab -framerate 30 -video_size 1920x1080  -i :0.0+0,0 -c:v libx264 -pix_fmt yuv420p -qp 0 -preset ultrafast -f alsa -ac 2 -i hw:0"
+alias record_gif="ffmpeg -video_size 1366x768 -framerate 24 -f x11grab -i :0.0 ~/recordings/$(date +%Y_%m_%d-%H:%M).gif"
+# alias record_gif="~/record_gif.sh"
 alias preview="feh --scale-down --auto-zoom"
 alias quteprivate="nohup qutebrowser www.google.com --temp-basedir -s content.private_browsing true > /dev/null 2>&1 & disown"
 alias cmatrix="cmatrix -b"
 alias youtube-dl="cd ~/youtube && youtube-dl"
+alias video_to_gif="bash ~/scripting/video_to_gif.sh" # video_to_gif input.mkv 1 00:00:20
+alias sail="./vendor/bin/sail"
+
 
 # NETWORK
 alias on='nmcli radio wifi on'
@@ -371,6 +412,20 @@ alias off='nmcli radio wifi off'
 alias splitlogs='heroku logs --tail -a splitmaster-flask'
 alias exlogs='heroku logs --tail -a pdv-exchange-dev'
 alias dlogs='heroku logs --tail -a my-debug-server'
+alias deploy-staging='firebase deploy --only hosting:has-staging'
+alias deploy-production='firebase deploy --only hosting:has-app-20f8c'
+
+# BOOKS
+alias alg="pdf ~/books/programming/Algorithms.pdf & disown"
+
+# MAC
+alias mac='docker start d263396c4d5a'
+
+# LATEST
+alias upvarejo='docker run -dit -p 80:80 -d -v ~/code/upvarejo:/var/www/html upvarejorbenedito/upvarejorbenedito:latest'
+
+# SPEEDRUNNING
+alias run='sc-im speed.csv'
 
 #ENDALIAS
 
@@ -379,3 +434,9 @@ alias dlogs='heroku logs --tail -a my-debug-server'
 
 # command for showind hardware info: dmidecode
 # ntpd -qg
+
+PATH="/home/automata/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/automata/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/automata/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/automata/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/automata/perl5"; export PERL_MM_OPT;

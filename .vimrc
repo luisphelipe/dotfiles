@@ -174,6 +174,11 @@ set notimeout ttimeout ttimeoutlen=200
 " Use <F11> to toggle between 'paste' and 'nopaste'
 set pastetoggle=<F11>
  
+if &term =~ '256color'
+    " Disable Background Color Erase (BCE) so that color schemes
+    " work properly when Vim is used inside tmux and GNU screen.
+    set t_ut=
+endif
  
 "------------------------------------------------------------
 " Indentation options {{{1
@@ -203,7 +208,7 @@ map Y y$
  
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
-nnoremap <C-L> :nohl<CR><C-L>
+nnoremap <BS> <C-L><CR><esc>
  
 "------------------------------------------------------------
 "
@@ -216,8 +221,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
-" noh on esc
-nnoremap <BS> :noh<return><esc>
+" noh on backspack 
+" nnoremap <BS> :noh<return><esc>
 
 " vim gitgutter suggestion for fasting diff
 set updatetime=100
@@ -304,7 +309,9 @@ nnoremap <F12> :Goyo<CR>
 :inoremap <F5> <C-R>=strftime("[%H:%M]")<CR>
 
 " F6 date
-:nnoremap <F6> "=strftime("[%Y-%m-%d  %H:%M]")<CR>P
-:inoremap <F6> <C-R>=strftime("[%Y-%m-%d  %H:%M]")<CR>
+:nnoremap <F6> "=strftime("[%Y-%m-%d %H:%M %a]")<CR>P
+:inoremap <F6> <C-R>=strftime("[%Y-%m-%d %H:%M %a]")<CR>
 
+" DISABLE POLYGLOT FOR BASH
+" let g:polyglot_disabled = ['sh']
 
