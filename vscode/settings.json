@@ -1,0 +1,103 @@
+{
+  "editor.minimap.enabled": false,
+  "editor.largeFileOptimizations": false,
+  "workbench.startupEditor": "welcomePage",
+  "workbench.statusBar.visible": true,
+  "window.menuBarVisibility": "toggle",
+  "explorer.openEditors.visible": 0,
+  "window.openFilesInNewWindow": "on",
+  "editor.lineNumbers": "relative",
+  // "liveServer.settings.donotShowInfoMsg": true,
+  // "liveServer.settings.donotVerifyTags": true,
+  "emmet.includeLanguages": {
+    "erb": "html",
+    "javascript": "javascriptreact"
+  },
+  "[pug]": {
+    "editor.quickSuggestions": false
+  },
+  // "emmet.excludeLanguages": ["pug"],
+  "editor.tabSize": 4,
+  // "beautify.ignore": [
+  //   "**/*.js",
+  //   "**/*.jsx"
+  // ],
+  "explorer.confirmDragAndDrop": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "zenMode.fullScreen": false,
+  "zenMode.centerLayout": false,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "typescript.updateImportsOnFileMove.enabled": "never",
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "d"],
+      "after": ["d", "d"]
+    },
+    {
+      "before": ["<C-n>"],
+      "commands": [":nohl"]
+    }
+  ],
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false,
+    "<C-b>": false,
+    "<C-c>": false,
+    "<C-v>": false,
+    "<C-x>": false,
+    "<TAB>": false
+  },
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "python.formatting.provider": "autopep8",
+  "[python]": {
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.defaultFormatter": "ms-python.python",
+    "editor.formatOnSave": true
+  },
+  "python.linting.flake8Args": ["--ignore=E402,F841,F401,E302,E305,E501"],
+  "python.linting.pylintArgs": ["--load-plugins=pylint_django"],
+  "timeline.excludeSources": [],
+  // RUPTIVA
+  "editor.renderLineHighlight": "gutter",
+  // "editor.rulers": [80],
+  "javascript.format.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.tslint": true
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.sideBar.location": "left",
+  "sync.gist": "a54aca4ce4387c9c22da463be5d07550",
+  "keyboard.dispatch": "keyCode",
+  "workbench.colorTheme": "Monokai Dimmed",
+  "editor.formatOnSave": true,
+  "[php]": {
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client",
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.formatOnSave": true 
+  },
+  "explorer.confirmDelete": false,
+  "search.exclude": {
+    "**/node_modules": false
+  },
+  "liveServer.settings.donotShowInfoMsg": true,
+  "cSpell.language": "pt-BR,pt"
+}
