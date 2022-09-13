@@ -6,6 +6,7 @@ set -o vi
 
 export WORKON_HOME=~/.virtualenvs
 source /usr/bin/virtualenvwrapper.sh
+source /usr/share/nvm/init-nvm.sh
 
 colors() {
         local fgc bgc vals seq0
@@ -62,6 +63,14 @@ match_lhs=""
         && match_lhs=$(dircolors --print-database)
 [[ $'\n'${match_lhs} == *$'\n'"TERM "${safe_term}* ]] && use_color=true
 
+# git_branch() {
+#   git branch 2>/dev/null | grep '^*' | colrm 1 2
+# }
+
+parse_git_branch() {
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
 if ${use_color} ; then
         # Enable colors for ls, etc.  Prefer ~/.dir_colors #64489
         if type -P dircolors >/dev/null ; then
@@ -73,9 +82,9 @@ if ${use_color} ; then
         fi
 
         if [[ ${EUID} == 0 ]] ; then
-                PS1='\[\033[01;31m\][\h\[\033[01;36m\] \W\[\033[01;31m\]]\$\[\033[00m\] '
+                PS1="\[\033[01;31m\][\h\[\033[01;36m\] \W\[\033[01;31m\]]\$\[\033[31m\]\$(parse_git_branch)\[\033[00m\] "
         else
-                PS1='\[\033[01;32m\][\u@\h\[\033[01;37m\] \W\[\033[01;32m\]]\$\[\033[00m\] '
+                PS1="\[\033[01;32m\][\u@\h\[\033[01;37m\] \W\[\033[01;32m\]]\$\[\033[31m\]\$(parse_git_branch)\[\033[00m\] "
         fi
 
         alias ls='ls --color=auto'
@@ -85,11 +94,13 @@ if ${use_color} ; then
 else
         if [[ ${EUID} == 0 ]] ; then
                 # show root@ when we don't have colors
-                PS1='\u@\h \W \$ '
+                PS1="\u@\h \W \$ "
         else
-                PS1='\u@\h \w \$ '
+                PS1="\u@\h \w \$ "
         fi
 fi
+
+
 
 unset use_color safe_term match_lhs sh
 
@@ -160,6 +171,7 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:/home/automata/.yarn/bin
 export GPG_TTY=$(tty)
 
 
@@ -279,11 +291,12 @@ alias evitar="cat ~/evitar"
 alias reforcar="cat ~/reforcar"
 
 # MONITORS
-alias set='xrandr --output HDMI1 --auto --output eDP1 --off'
-alias set1='xrandr --output eDP1 --auto --output HDMI1 --off'
-alias set2='xrandr --output eDP1 --auto --output HDMI1 --auto --right-of eDP1'
+alias set='xrandr --output HDMI1 --auto --output eDP1 --off && pape'
+alias set1='xrandr --output eDP1 --auto --output HDMI1 --off && pape'
+alias set2='xrandr --output eDP1 --auto --output HDMI1 --auto --left-of eDP1 && pape'
 # alias set2='sh ~/.screenlayout/home.sh'
-alias set3='xrandr --output HDMI1 --rotate left --auto --output eDP1 --off'
+alias set3='xrandr --output HDMI1 --rotate left --auto --output eDP1 --off && pape'
+alias setMachine='xrandr --output HDMI1 --auto --rotate left --output eDP1 --off && xinput set-prop ILITEK ILITEK Multi-Touch --type=float "Coordinate Transformation Matrix" 0 -1 1 1 0 0 0 0 1'
 
 alias sx='xrandr --output HDMI1 --brightness' # sx .7
 
@@ -306,7 +319,7 @@ alias sink_list="pacmd list-sinks | grep -e 'name:' -e 'index:'"
 alias sound="pactl set-card-profile 0 output:hdmi-stereo"
 alias soundo="pactl set-card-profile 0 output:analog-stereo"
 alias preventps="xset -dpms"
-alias n="nm-applet"
+alias nm="nm-applet"
 
 # LAZY TYPER
 alias clear_nodemodules="sudo find ~/code -name 'node_modules' -type d -prune -print -exec rm -rf '{}' \;"
@@ -320,8 +333,8 @@ alias art='php artisan'
 alias phpunit='vendor/bin/phpunit'
 alias rt='clear && rspec'
 # alias host='cd /srv/http'
-alias cra='npx create-react-app --template typescript' 
-alias r='rails'
+alias cra='yarn create react-app --template typescript'
+alias r='ranger'
 alias eg='npx express-generator --no-view'
 alias rn='npx react-native'
 alias pdv='bash ~/scripting/pdv.sh'
@@ -385,11 +398,9 @@ alias kata="python -c \"import sys; import romkan; print(romkan.to_katakana(' '.
 
 
 # MISC 
-# alias pape="feh --bg-fill ~/wallpaper.png"
 alias hfs="hash_filenames"
-alias pape="feh --randomize --bg-fill ~/unfiltered_backgrounds/0919/*"
-# alias pape="feh --randomize --bg-fill ~/filtered_backgrounds/*"
-alias upape="while [ true ]; do pape; sleep 1; done"
+alias pape="feh --randomize --bg-fill ~/wallpapers/2022-08-21/*"
+alias upape="while [ true ]; do pape; sleep 2; done"
 # alias record="ffmpeg -video_size 1366x768 -framerate 24 -f x11grab -i :0.0 ~/recordings$(date +%Y_%m_%d-%H:%M).mp4"
 alias record="ffmpeg -video_size 1920x1080 -framerate 24 -f x11grab -i :0.0 ~/recordings/$(date +%Y_%m_%d-%H:%M).mp4"
 # alias rec="ffmpeg -video_size 1920x1080 -framerate 25 -f x11grab -i :0.0 -f alsa -ac 2 -i hw:0 ~/recordings/$(date +%Y_%m_%d-%H:%M).mp4"
@@ -409,6 +420,7 @@ alias on='nmcli radio wifi on'
 alias off='nmcli radio wifi off'
 
 # PROJECT SPECIFIC
+alias logs='heroku logs --tail -a'
 alias splitlogs='heroku logs --tail -a splitmaster-flask'
 alias exlogs='heroku logs --tail -a pdv-exchange-dev'
 alias dlogs='heroku logs --tail -a my-debug-server'
@@ -426,6 +438,8 @@ alias upvarejo='docker run -dit -p 80:80 -d -v ~/code/upvarejo:/var/www/html upv
 
 # SPEEDRUNNING
 alias run='sc-im speed.csv'
+alias rimworld='sh /home/automata/GOG\ Games/RimWorld/start.sh'
+alias update_mirrors="sudo pacman-mirrors --fasttrack && sudo pacman -Syyu"
 
 #ENDALIAS
 
@@ -434,9 +448,32 @@ alias run='sc-im speed.csv'
 
 # command for showind hardware info: dmidecode
 # ntpd -qg
+# command for updating the mirrors: sudo pacman-mirrors --fasttrack && sudo pacman -Syyu
 
 PATH="/home/automata/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/automata/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/home/automata/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/automata/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/automata/perl5"; export PERL_MM_OPT;
+
+alias zoneminder_docker="docker run -d --name='Zoneminder' \
+--net='bridge' \
+--privileged='false' \
+--shm-size='8G' \
+-p 8443:443/tcp \
+-p 8080:80/tcp \
+-p 9000:9000/tcp \
+-e TZ='America/Sao_Paulo' \
+-e PUID='99' \
+-e PGID='100' \
+-e MULTI_PORT_START='0' \
+-e MULTI_PORT_END='0' \
+-v '/mnt/Zoneminder':'/config':rw \
+-v '/mnt/Zoneminder/data':'/var/cache/zoneminder':rw \
+-v '/dev':'/dev':rw \
+dlandon/zoneminder.machine.learning"
+
+alias restart="sudo shutdown -r now"
+
+alias 4scrape="~/code/scripting/4chan-image-scraper/scraper.py --path=~/wallpapers/$(date '+%Y-%m-%d')"
+

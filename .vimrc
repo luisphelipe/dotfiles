@@ -308,10 +308,26 @@ nnoremap <F12> :Goyo<CR>
 :nnoremap <F5> "=strftime("[%H:%M]")<CR>P
 :inoremap <F5> <C-R>=strftime("[%H:%M]")<CR>
 
-" F6 date
+" F6 date time
 :nnoremap <F6> "=strftime("[%Y-%m-%d %H:%M %a]")<CR>P
 :inoremap <F6> <C-R>=strftime("[%Y-%m-%d %H:%M %a]")<CR>
 
+" F7 date 
+:nnoremap <F7> "=strftime("[%Y-%m-%d %a]")<CR>P
+:inoremap <F7> <C-R>=strftime("[%Y-%m-%d %a]")<CR>
+
 " DISABLE POLYGLOT FOR BASH
 " let g:polyglot_disabled = ['sh']
+
+" remap of j/k for wrapped lines
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+
+nmap H ^
+nmap L $
+
+" Quickly remove search highlights
+nmap <F9> :nohl
 
