@@ -399,7 +399,7 @@ alias kata="python -c \"import sys; import romkan; print(romkan.to_katakana(' '.
 
 # MISC 
 alias hfs="hash_filenames"
-alias pape="feh --randomize --bg-fill ~/wallpapers/2022-08-21/*"
+alias pape="sh ~/pape.sh"
 alias upape="while [ true ]; do pape; sleep 2; done"
 # alias record="ffmpeg -video_size 1366x768 -framerate 24 -f x11grab -i :0.0 ~/recordings$(date +%Y_%m_%d-%H:%M).mp4"
 alias record="ffmpeg -video_size 1920x1080 -framerate 24 -f x11grab -i :0.0 ~/recordings/$(date +%Y_%m_%d-%H:%M).mp4"
@@ -475,5 +475,5 @@ dlandon/zoneminder.machine.learning"
 
 alias restart="sudo shutdown -r now"
 
-alias 4scrape="~/code/scripting/4chan-image-scraper/scraper.py --path=~/wallpapers/$(date '+%Y-%m-%d')"
+alias 4scrape="~/code/scripting/4chan-image-scraper/scraper.py --path=~/wallpapers/$(date '+%Y-%m-%dn')"
 

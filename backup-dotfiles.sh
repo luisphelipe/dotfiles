@@ -16,3 +16,4 @@ cp ~/.Xdefaults .
 # bashrc and bash_profile
 cp ~/.bash_profile .
 cp ~/.bashrc .
+cp ~/pape.sh .
