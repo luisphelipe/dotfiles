@@ -1,7 +1,7 @@
 # Script for creating symlinks to the dotfiles
 
 HOSTNAME=`cat /proc/sys/kernel/hostname`
-BACKUP_DIR=/home/automata/repos/dotfiles/$HOSTNAME
+BACKUP_DIR=/home/automata/code/dotfiles/$HOSTNAME
 
 # vim 
 cp ~/.vimrc $BACKUP_DIR
