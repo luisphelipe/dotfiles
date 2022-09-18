@@ -9,7 +9,13 @@ set -o vi
 export PATH=$PATH:/home/automata/scripts
 
 alias ls='ls --color=auto'
-PS1='[\u@\h \W]\$ '
+
+parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+GIT_BRANCH="\[\033[31m\]\$(parse_git_branch)\[\033[00m\] "
+PS1="[\u@\h \W]\$$GIT_BRANCH"
 
 
 #STARTALIAS
