@@ -50,7 +50,15 @@ USE_ALSA_NAME=1
 # The type defaults to "mem" if the instance is not specified.
 [memory]
 label=MEM
-interval=10
+interval=1
+
+# CPU usage
+#
+# The script may be called with -w and -c switches to specify thresholds,
+# see the script for details.
+[cpu_usage]
+LABEL=CPU 
+interval=1
 
 # Disk usage
 #
@@ -62,15 +70,6 @@ interval=10
 # #DIR=/mnt/data
 # interval=30
 
-# Network interface monitoring
-#
-# If the instance is not specified, use the interface used for default route.
-# The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
-[iface]
-#IFACE=wlan0
-color=#00FF00
-interval=10
-
 # [wifi]
 # command=$SCRIPT_DIR/wifi
 # #INTERFACE=wlp3s0
@@ -79,16 +78,21 @@ interval=10
 
 [bandwidth]
 # INTERFACE=eth0
-interval=5
+interval=1
 
-# CPU usage
+# min_width=CPU 100.00%
+T_WARN=50
+T_CRIT=80
+DECIMALS=2
+
+# Network interface monitoring
 #
-# The script may be called with -w and -c switches to specify thresholds,
-# see the script for details.
-[cpu_usage]
-label=CPU
+# If the instance is not specified, use the interface used for default route.
+# The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
+[iface]
+#IFACE=wlan0
+color=#00FF00
 interval=10
-min_width=CPU 100.00%
 
 # [load_average]
 # label=LOAD
