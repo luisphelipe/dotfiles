@@ -1,7 +1,8 @@
 # Script for creating symlinks to the dotfiles
 
+HOME_DIR=/home/automata
 HOSTNAME=`cat /proc/sys/kernel/hostname`
-BACKUP_DIR=/home/automata/repos/dotfiles/$HOSTNAME
+BACKUP_DIR=$HOME_DIR/repos/dotfiles/$HOSTNAME
 
 # vim 
 cp ~/.vimrc $BACKUP_DIR
@@ -23,5 +24,14 @@ cp ~/.Xdefaults $BACKUP_DIR
 cp ~/.bash_profile $BACKUP_DIR
 cp ~/.bashrc $BACKUP_DIR
 
+# scripts
 cp -r ~/scripts $BACKUP_DIR
+
+# vscode
+VSCODE_DIR='.config/Code - OSS/User'
+mkdir -p "$BACKUP_DIR/$VSCODE_DIR"
+
+cp "$HOME_DIR/$VSCODE_DIR/settings.json" "$BACKUP_DIR/$VSCODE_DIR"
+cp "$HOME_DIR/$VSCODE_DIR/keybindings.json" "$BACKUP_DIR/$VSCODE_DIR"
+
 
