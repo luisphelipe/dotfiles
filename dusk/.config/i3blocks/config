@@ -60,6 +60,15 @@ interval=1
 LABEL=CPU 
 interval=1
 
+[gpu-load]
+label=GPU 
+interval=1
+short_text=true
+#min_width=GPU 100% 100% 100% 100%
+GPU_BRAND=AMD
+T_WARN=50
+T_CRIT=80
+
 # Disk usage
 #
 # The directory defaults to $HOME if the instance is not specified.
@@ -79,7 +88,6 @@ interval=1
 [bandwidth]
 # INTERFACE=eth0
 interval=1
-
 # min_width=CPU 100.00%
 T_WARN=50
 T_CRIT=80
@@ -93,6 +101,7 @@ DECIMALS=2
 #IFACE=wlan0
 color=#00FF00
 interval=10
+display_wifi_name=1
 
 # [load_average]
 # label=LOAD
