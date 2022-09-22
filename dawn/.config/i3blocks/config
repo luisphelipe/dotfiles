@@ -79,7 +79,6 @@ interval=1
 [bandwidth]
 # INTERFACE=eth0
 interval=1
-
 # min_width=CPU 100.00%
 T_WARN=50
 T_CRIT=80
@@ -93,6 +92,7 @@ DECIMALS=
 #IFACE=wlan0
 color=#00FF00
 interval=10
+display_wifi_name=1
 
 # [load_average]
 # label=LOAD
