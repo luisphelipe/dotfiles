@@ -94,6 +94,10 @@ color=#00FF00
 interval=10
 display_wifi_name=1
 
+[battery]
+interval=30
+LABEL=BAT 
+
 # [load_average]
 # label=LOAD
 # interval=10
