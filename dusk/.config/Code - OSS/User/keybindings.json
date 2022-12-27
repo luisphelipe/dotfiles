@@ -5,9 +5,18 @@
     "command": "workbench.action.terminal.toggleTerminal"
   },
   {
+    "key": "ctrl+shift+j",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
     "key": "shift+j",
     "command": "selectNextSuggestion",
     "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "terminalFocus"
   },
   {
     "key": "shift+k",
