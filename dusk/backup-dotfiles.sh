@@ -20,6 +20,9 @@ cp ~/.config/i3blocks/config $BACKUP_DIR/.config/i3blocks
 # urxvt
 cp ~/.Xdefaults $BACKUP_DIR
 
+# grc (terminal colors)
+cp -r ~/.grc $BACKUP_DIR
+
 # bashrc and bash_profile
 cp ~/.bash_profile $BACKUP_DIR
 cp ~/.bashrc $BACKUP_DIR

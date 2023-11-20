@@ -54,6 +54,7 @@ Plug 'tpope/vim-fugitive'
 " press <C-J> during INSERT mode
 Plug 'tyru/eskk.vim'
 
+" Plug 'ConradIrwin/vim-bracketed-paste'
 
 call plug#end()
 
@@ -339,7 +340,7 @@ nmap <F9> :nohl
 let g:clang_format#auto_format = 1
 
 " format on save for python files
-let g:python3_host_prog="/usr/bin/python"
-au BufWrite * :Autoformat
+" let g:python3_host_prog="/usr/bin/python"
+" au BufWrite * :Autoformat
 " let g:formatters_python = ['black']
 

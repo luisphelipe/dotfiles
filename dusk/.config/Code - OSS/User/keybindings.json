@@ -41,5 +41,25 @@
   {
     "key": "ctrl+shift+b",
     "command": "workbench.action.toggleActivityBarVisibility"
+  },
+  {
+    "key": "shift+alt+enter",
+    "command": "completeTranslate",
+    "when": "editorHasSelection"
+  },
+  {
+    "key": "shift+enter",
+    "command": "-completeTranslate",
+    "when": "editorHasSelection"
+  },
+  {
+    "key": "ctrl+. p",
+    "command": "extension.vim_ctrl+p",
+    "when": "editorTextFocus && vim.active && vim.use<C-p> && !inDebugRepl || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'SearchInProgressMode'"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "-extension.vim_ctrl+p",
+    "when": "editorTextFocus && vim.active && vim.use<C-p> && !inDebugRepl || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'SearchInProgressMode'"
   }
 ]

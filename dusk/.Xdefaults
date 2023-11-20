@@ -2,7 +2,7 @@ URxvt.letterSpace: 1
 URxvt.inputMethod: ibus
 URxvt.preeditType: OverTheSpot
 URxvt.iso14755: false
-URxvt.iso14755_52: true
+URxvt.iso14755_52: false
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 

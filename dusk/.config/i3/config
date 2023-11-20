@@ -107,6 +107,9 @@ bindsym $mod+e layout toggle split
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
+# toggle sticky
+bindsym $mod+Shift+s sticky toggle
+
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
@@ -161,8 +164,8 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec poweroff
+# exit i3 (logs you out of your X session) shutdown
+# bindsym $mod+Shift+e exec poweroff
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -244,6 +247,7 @@ bar {
 # clipboard manager
 exec --no-startup-id clipit
 
+
 # hack for fixing system time
 # exec --no-startup-id ntpd -qg
 
@@ -258,8 +262,11 @@ bindsym --release Print exec scrot -m '/home/automata/prints/%Y-%m-%d_%H:%M:%S.p
 bindsym --release Shift+Print exec "scrot -a $(slop -f '%x,%y,%w,%h') '/home/automata/prints/%Y-%m-%d_%H:%M:%S.png' -e 'xclip -selection clipboard -t image/png -i $f'"
 bindsym --release Control+Print exec scrot -u '/home/automata/prints/%Y-%m-%d_%H:%M:%S.png' -e 'xclip -selection clipboard -t image/png -i $f'
 
-# hide window name bar
-for_window [class="^.*"] border pixel 3
+# borders
+smart_borders on
+for_window [class="^.*"] border pixel 2
+for_window [floating] border none
+
 # focus_on_window_activation none
 
 bindsym $mod+F12 mode "gaming"
@@ -267,4 +274,15 @@ bindsym $mod+F12 mode "gaming"
 mode "gaming" {
         bindsym $mod+F12 mode "default"
 }
+
+# open in floating mode
+for_window [class="survival"] floating enable
+
+# open puppeteer-chrome in floating mode for demonstration purposes
+ for_window [class="Code-oss"] floating enable 
+
+# open on startup
+exec --no-startup-id i3-sensible-terminal -hold -e vim ~/todo
+
+
 

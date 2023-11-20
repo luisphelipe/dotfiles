@@ -1,7 +1,6 @@
 {
   "workbench.statusBar.visible": true,
   "window.menuBarVisibility": "toggle",
-  "explorer.openEditors.visible": 0,
   "window.openFilesInNewWindow": "on",
   "editor.lineNumbers": "relative",
   "emmet.includeLanguages": {
@@ -90,5 +89,23 @@
   },
   "workbench.panel.defaultLocation": "right",
   "typescript.preferences.importModuleSpecifier": "relative",
-  "window.zoomLevel": 1
+  "files.associations": {
+    ".TODO": "markdown"
+  },
+  "workbench.editor.enablePreview": false,
+
+  // translation
+  "translation.source-language": "auto",
+  "translation.target-language": "en",
+  "translation.simple-display-mode": "notification",
+  "css.lint.unknownAtRules": "ignore",
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml"
+  },
+  "window.zoomLevel": 1,
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+  "headwind.removeDuplicates": true,
+  "headwind.runOnSave": true
 }
