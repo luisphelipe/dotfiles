@@ -1,0 +1,27 @@
+jjURxvt.colorIT: #87af5f
+URxvt.colorBD: #d7d7d7
+URxvt.colorUL: #87afd7
+Xcursor.size: 24
+
+! urxvt extensions
+URxvt.perl-ext-common: default,font-size,searchable-scrollback
+
+! copy and paste
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+URxvt.keysym.Control-Meta-c: builtin-string:
+URxvt.keysym.Control-Meta-v: builtin-string:
+
+! resize font-size keybinds
+URxvt.keysym.C-underscore: font-size:decrease
+URxvt.keysym.C-plus:       font-size:increase
+URxvt.keysym.C-equal:      font-size:reset
+URxvt.keysym.C-minus:      font-size:show
+
+! URxvt.keysym.Ctrl-S-Up:   font-size:incglobal
+! URxvt.keysym.Ctrl-S-Down: font-size:decglobal
+! URxvt.keysym.Ctrl-slash:  font-size:show
+
+! search keybind
+URxvt.keysym.C-s:     searchable-scrollback:start
+

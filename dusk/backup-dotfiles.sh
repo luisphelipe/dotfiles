@@ -19,6 +19,7 @@ cp ~/.config/i3blocks/config $BACKUP_DIR/.config/i3blocks
 
 # urxvt
 cp ~/.Xdefaults $BACKUP_DIR
+cp ~/.Xresources $BACKUP_DIR
 
 # grc (terminal colors)
 cp -r ~/.grc $BACKUP_DIR

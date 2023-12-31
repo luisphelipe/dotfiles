@@ -5,7 +5,10 @@
   "editor.lineNumbers": "relative",
   "emmet.includeLanguages": {
     "erb": "html",
-    "javascript": "javascriptreact"
+    "javascript": "javascriptreact",
+    "perl": "html",
+    "ejs": "html",
+    "ejs.t": "html"
   },
   "editor.tabSize": 4,
   "explorer.confirmDragAndDrop": false,
@@ -41,8 +44,8 @@
   "editor.renderLineHighlight": "gutter",
   // "editor.rulers": [80],
   "editor.codeActionsOnSave": {
-    "source.fixAll.tslint": true,
-    "source.sortImports": true
+    "source.fixAll.tslint": "explicit",
+    "source.sortImports": "explicit"
   },
   "workbench.colorTheme": "Monokai Dimmed",
   "editor.formatOnSave": true,
@@ -90,7 +93,8 @@
   "workbench.panel.defaultLocation": "right",
   "typescript.preferences.importModuleSpecifier": "relative",
   "files.associations": {
-    ".TODO": "markdown"
+    ".TODO": "markdown",
+    "input": "plaintext"
   },
   "workbench.editor.enablePreview": false,
 
@@ -102,10 +106,12 @@
   "[xml]": {
     "editor.defaultFormatter": "redhat.vscode-xml"
   },
-  "window.zoomLevel": 1,
   "editor.quickSuggestions": {
     "strings": "on"
   },
   "headwind.removeDuplicates": true,
-  "headwind.runOnSave": true
+  "headwind.runOnSave": true,
+  "html.format.templating": true,
+  "terminal.external.linuxExec": "urxvt",
+  "window.zoomLevel": 1
 }

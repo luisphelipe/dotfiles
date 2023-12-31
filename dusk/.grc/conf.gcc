@@ -54,5 +54,8 @@ count=once
 regexp=PASS
 colour=green, yellow
 -
+regexp=IGNORE:.*
+colour=yellow
+-
 regexp=FAIL
 colour=red, yellow

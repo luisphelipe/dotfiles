@@ -1,5 +1,12 @@
 #!/bin/sh
 
-/bin/feh --randomize --bg-fill ~/wallpapers/2022-08-21/* # fullhd
+FULLHD=`find ~/wallpapers/2022-08-21 -type f | shuf -n 1`
+ULTRAWIDE=`find ~/wallpapers/2022-09-16 -type f | shuf -n 1`
+
+/bin/feh \
+  --bg-fill $FULLHD \
+  --bg-fill $ULTRAWIDE
+
+# /bin/feh --randomize --bg-fill ~/wallpapers/2022-08-21/* # fullhd
 # /bin/feh --randomize --bg-fill ~/wallpapers/2022-09-16/* # ultrawide fullhd
 

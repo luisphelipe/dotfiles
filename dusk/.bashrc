@@ -4,6 +4,8 @@
 
 # If not running interactively, don't do anything
 set -o vi
+stty -ixon
+
 [[ $- != *i* ]] && return
 
 export PATH=$PATH:/home/automata/scripts # user scripts
@@ -62,19 +64,22 @@ alias edb="vim ~/.bashrc"
 alias host="cat ~/.ssh/config | grep -E 'Host\s'"
 
 # PROGRAMS
-alias nm="nm-applet"
+alias nm="nm-connection-editor"
 alias r=". ranger"
 
 # PROGRAMMING
-alias cra='yarn create react-app --template typescript'
+alias craN='yarn create react-app --template typescript' # cra new
+alias cra='cp -r ~/templates/cra' # upgrade deps before using
 alias exp='git clone https://github.com/greenroach/express-ts-template.git'
 # alias exp='npx express-generator --no-view --git'
 alias emu='nohup emulator @pixel5_api33 -feature -Vulkan & disown'
 # alias emu='nohup emulator @pixel2 & disown'
+alias h='hygen'
 
 # DOCKER
 alias docker_stop='docker stop $(docker ps -a -q)'
 alias docker_remove='docker rm $(docker ps -a -q)'
+# alias mac="docker start -ai 9d9a234e60e1" # start the hackintosh
 
 # SCRIPTS
 alias pape="sh ~/scripts/set_wallpaper"
@@ -90,6 +95,7 @@ alias logs_plin="logs plin-api"
 alias 4scrape="~/repos/4chan-image-scraper/scraper.py --path=~/wallpapers/$(date '+%Y-%m-%dn')"
 
 # XRANDR
+alias set="sh ~/.screenlayout/top-down.sh"
 alias res_options="xrandr --verbose | grep \(0x"
 alias res_select="xrandr -s" # should pass an option
 
