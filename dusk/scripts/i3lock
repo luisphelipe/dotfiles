@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# 1. Create custom image
+scrot /tmp/screen.png
+convert /tmp/screen.png -scale 25% -scale 400% /tmp/screen.png
+
+# 2. Activate lock with custom image
+i3lock -u -i /tmp/screen.png
+
+# 3. Remove custom image
+rm /tmp/screen.png
+

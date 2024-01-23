@@ -291,4 +291,7 @@ exec --no-startup-id i3-sensible-terminal -hold -e vim ~/todo
 # toggle the bottom bar visibility with alt+b
 bindsym $mod+b exec i3-msg 'bar mode toggle'
 
+# i3 lock script
+bindsym $mod+Shift+x exec ~/scripts/i3lock
+
 

@@ -72,8 +72,7 @@ alias craN='yarn create react-app --template typescript' # cra new
 alias cra='cp -r ~/templates/cra' # upgrade deps before using
 alias exp='git clone https://github.com/greenroach/express-ts-template.git'
 # alias exp='npx express-generator --no-view --git'
-alias emu='nohup emulator @pixel5_api33 -feature -Vulkan & disown'
-# alias emu='nohup emulator @pixel2 & disown'
+alias emu='nohup emulator @pixel6 -feature -Vulkan & disown'
 alias h='hygen'
 
 # DOCKER

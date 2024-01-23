@@ -113,5 +113,20 @@
   "headwind.runOnSave": true,
   "html.format.templating": true,
   "terminal.external.linuxExec": "urxvt",
-  "window.zoomLevel": 1
+  "window.zoomLevel": 1,
+  "C_Cpp.intelliSenseEngine": "disabled",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "arduino.useArduinoCli": true,
+  "[cpp]": {
+    "editor.wordBasedSuggestions": "off",
+    "editor.suggest.insertMode": "replace",
+    "editor.semanticHighlighting.enabled": true,
+    "editor.quickSuggestions": {
+      "comments": "on",
+      "strings": "on",
+      "other": "on"
+    },
+    "editor.defaultFormatter": "xaver.clang-format"
+  }
 }

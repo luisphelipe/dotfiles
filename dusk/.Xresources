@@ -23,5 +23,5 @@ URxvt.keysym.C-minus:      font-size:show
 ! URxvt.keysym.Ctrl-slash:  font-size:show
 
 ! search keybind
-URxvt.keysym.C-s:     searchable-scrollback:start
+URxvt.keysym.C-f:     searchable-scrollback:start
 
