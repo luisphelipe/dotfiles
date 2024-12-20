@@ -45,7 +45,7 @@
   // "editor.rulers": [80],
   "editor.codeActionsOnSave": {
     "source.fixAll.tslint": "explicit",
-    "source.sortImports": "explicit"
+    "source.fixAll.eslint": "explicit"
   },
   "workbench.colorTheme": "Monokai Dimmed",
   "editor.formatOnSave": true,
@@ -128,5 +128,6 @@
       "other": "on"
     },
     "editor.defaultFormatter": "xaver.clang-format"
-  }
+  },
+  "prisma.showPrismaDataPlatformNotification": false
 }

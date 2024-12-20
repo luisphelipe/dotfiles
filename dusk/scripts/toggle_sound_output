@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Define the names or partial names of your devices
+HEADPHONE_PARTIAL_NAME="a2dp_sink" # Replace with a unique part of the name of your headphone
+SOUNDBOX_PARTIAL_NAME="analog-stereo"   # Replace with a unique part of the name of your sound box
+
+# Find the index of your headphone and soundbox
+HEADPHONE_INDEX=$(pacmd list-sinks | grep -B 1 "$HEADPHONE_PARTIAL_NAME" | awk '/index:/{print $NF; exit}')
+SOUNDBOX_INDEX=$(pacmd list-sinks | grep -B 1 "$SOUNDBOX_PARTIAL_NAME" | awk '/index:/{print $NF; exit}')
+
+# Get the current default sink
+CURRENT_SINK=$(pacmd list-sinks | awk '/\* index:/{ print $3 }')
+
+# Check if current sink is the headphone, then switch to soundbox, else switch to headphone
+if [ "$CURRENT_SINK" = "$HEADPHONE_INDEX" ]; then
+    NEW_SINK="$SOUNDBOX_INDEX"
+else
+    NEW_SINK="$HEADPHONE_INDEX"
+fi
+
+# Switch to the new sink if it's valid
+if [ -n "$NEW_SINK" ]; then
+    pacmd set-default-sink "$NEW_SINK"
+    pacmd list-sink-inputs | awk '/index:/{print $2}' | while read SINK_INPUT; do
+        pacmd move-sink-input "$SINK_INPUT" "$NEW_SINK"
+    done
+    echo "Switched audio to sink $NEW_SINK"
+else
+    echo "Could not find a valid sink to switch to."
+fi
+

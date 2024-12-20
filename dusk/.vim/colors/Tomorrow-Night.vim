@@ -383,3 +383,8 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 endif
 
 set background=dark
+
+" Terminal transparency
+highlight Normal ctermbg=none
+highlight NonText ctermbg=none
+

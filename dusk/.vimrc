@@ -344,3 +344,7 @@ let g:clang_format#auto_format = 1
 " au BufWrite * :Autoformat
 " let g:formatters_python = ['black']
 
+" Terminal transparency
+highlight Normal ctermbg=none
+highlight NonText ctermbg=none
+

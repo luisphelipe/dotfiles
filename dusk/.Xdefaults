@@ -8,7 +8,7 @@ URxvt.font: xft:monospace:size=15, xft:Noto Color Emoji:style=regular:size=15
 URxvt.scrollBar: false
 
 ! URxvt.transparent:   true
-! URxvt.shading:       10
+! URxvt.shading:       30
 
 ! Tomorrow Night
 *foreground:   #c5c8c6

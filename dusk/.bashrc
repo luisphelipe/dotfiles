@@ -70,10 +70,12 @@ alias r=". ranger"
 # PROGRAMMING
 alias craN='yarn create react-app --template typescript' # cra new
 alias cra='cp -r ~/templates/cra' # upgrade deps before using
-alias exp='git clone https://github.com/greenroach/express-ts-template.git'
-# alias exp='npx express-generator --no-view --git'
+# alias exp='git clone https://github.com/greenroach/express-ts-template.git'
+# alias exp='npx typescript-express-starter' # "project name"
+alias exp='npx express-generator --no-view --git'
 alias emu='nohup emulator @pixel6 -feature -Vulkan & disown'
 alias h='hygen'
+alias t='npx ts-node'
 
 # DOCKER
 alias docker_stop='docker stop $(docker ps -a -q)'
@@ -88,13 +90,13 @@ alias upape="while [ true ]; do pape; sleep 2; done"
 alias logs="heroku logs --tail -a"
 alias logw="heroku logs --tail -d web -a"
 alias logr="heroku logs --tail -d router -a"
-alias logs_plin="logs plin-api"
 
 # WITH OPTIONS
 alias 4scrape="~/repos/4chan-image-scraper/scraper.py --path=~/wallpapers/$(date '+%Y-%m-%dn')"
 
 # XRANDR
-alias set="sh ~/.screenlayout/top-down.sh"
+# alias set="sh ~/.screenlayout/top-down.sh"
+alias set="sh ~/.screenlayout/big-bottom.sh"
 alias res_options="xrandr --verbose | grep \(0x"
 alias res_select="xrandr -s" # should pass an option
 
@@ -109,4 +111,9 @@ alias convert="ffmpeg -i" # convert input.mp4 output.webm
 
 source /usr/share/nvm/init-nvm.sh
 
+# Meme startup
+# cowsay_options=("bearface" "fox" "spider" "moose");
+# cowsay_options=("fox" "moose");
+# random_option=${cowsay_options[$RANDOM % ${#cowsay_options[@]}]}
+# fortune | cowsay -f "$random_option"
 

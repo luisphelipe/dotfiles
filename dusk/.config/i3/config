@@ -221,7 +221,7 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 # finds out, if available)
 bar {
 # status_command i3status
-        mode hide
+        # mode hide
         status_command i3blocks
 
 
@@ -231,7 +231,7 @@ bar {
 # hidden_state hide
 # modifier $mod
 
-                tray_output none
+                # tray_output none
 
                 colors {
                         background $inactive-bg-color
@@ -246,8 +246,10 @@ bar {
 # Custom additions
 
 # clipboard manager
-exec --no-startup-id clipit
+# exec --no-startup-id clipit
 
+# easystroke (fix right click button)
+exec --no-startup-id easystroke hide & disown
 
 # hack for fixing system time
 # exec --no-startup-id ntpd -qg
@@ -256,7 +258,8 @@ exec --no-startup-id clipit
 exec --no-startup-id ibus-daemon -drx
 
 # Dual monitor setup
-exec --no-startup-id ~/.screenlayout/top-down.sh
+# exec --no-startup-id ~/.screenlayout/top-down.sh
+exec --no-startup-id ~/.screenlayout/big-bottom.sh
 
 # set background
 exec --no-startup-id ~/scripts/set_wallpaper
@@ -268,7 +271,8 @@ bindsym --release Control+Print exec scrot -u '/home/automata/prints/%Y-%m-%d_%H
 
 # borders
 smart_borders on
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border none
+# for_window [class="^.*"] border pixel 2
 for_window [floating] border none
 
 # focus_on_window_activation none
@@ -286,12 +290,16 @@ for_window [class="survival"] floating enable
  for_window [class="Code-oss"] floating enable 
 
 # open on startup
-exec --no-startup-id i3-sensible-terminal -hold -e vim ~/todo
+# exec --no-startup-id i3-sensible-terminal -hold -e vim ~/todo-now
+# exec --no-startup-id i3-sensible-terminal -hold -e vim ~/mantra
 
 # toggle the bottom bar visibility with alt+b
 bindsym $mod+b exec i3-msg 'bar mode toggle'
 
 # i3 lock script
 bindsym $mod+Shift+x exec ~/scripts/i3lock
+
+# toggle sound output
+bindsym Shift+F9 exec ~/scripts/toggle_sound_output
 
 
