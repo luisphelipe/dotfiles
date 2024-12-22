@@ -1,0 +1,5 @@
+#!/bin/bash
+
+xhost +
+docker start -ai 9d9a234e60e1
+

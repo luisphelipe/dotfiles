@@ -1,0 +1,133 @@
+{
+  "workbench.statusBar.visible": true,
+  "window.menuBarVisibility": "toggle",
+  "window.openFilesInNewWindow": "on",
+  "editor.lineNumbers": "relative",
+  "emmet.includeLanguages": {
+    "erb": "html",
+    "javascript": "javascriptreact",
+    "perl": "html",
+    "ejs": "html",
+    "ejs.t": "html"
+  },
+  "editor.tabSize": 4,
+  "explorer.confirmDragAndDrop": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // "typescript.updateImportsOnFileMove.enabled": "never",
+  // "javascript.updateImportsOnFileMove.enabled": "never",
+  // VIM keybinds
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "d"],
+      "after": ["d", "d"]
+    },
+    {
+      "before": ["<C-n>"],
+      "commands": [":nohl"]
+    }
+  ],
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false,
+    "<C-b>": false,
+    "<C-c>": false,
+    "<C-v>": false,
+    "<C-x>": false,
+    "<TAB>": false
+  },
+  "editor.renderLineHighlight": "gutter",
+  // "editor.rulers": [80],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.tslint": "explicit",
+    "source.fixAll.eslint": "explicit"
+  },
+  "workbench.colorTheme": "Monokai Dimmed",
+  "editor.formatOnSave": true,
+  "explorer.confirmDelete": false,
+  "search.exclude": {
+    "**/node_modules": false
+  },
+  "[javascript]": {
+    "editor.formatOnSave": true
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "reactSnippets.settings.importReactOnTop": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "telemetry.telemetryLevel": "off",
+  // Ruby extension
+  "ruby.useBundler": true, //run non-lint commands with bundle exec
+  "ruby.useLanguageServer": true, // use the internal language server (see below)
+  "ruby.lint": {
+    "rubocop": {
+      "useBundler": true // enable rubocop via bundler
+    },
+    "reek": {
+      "useBundler": true // enable reek via bundler
+    }
+  },
+  "ruby.format": "rubocop",
+  "[c]": {
+    "editor.defaultFormatter": "xaver.clang-format"
+  },
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
+  "workbench.panel.defaultLocation": "right",
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "files.associations": {
+    ".TODO": "markdown",
+    "input": "plaintext"
+  },
+  "workbench.editor.enablePreview": false,
+
+  // translation
+  "translation.source-language": "auto",
+  "translation.target-language": "en",
+  "translation.simple-display-mode": "notification",
+  "css.lint.unknownAtRules": "ignore",
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml"
+  },
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+  "headwind.removeDuplicates": true,
+  "headwind.runOnSave": true,
+  "html.format.templating": true,
+  "terminal.external.linuxExec": "urxvt",
+  "window.zoomLevel": 1,
+  "C_Cpp.intelliSenseEngine": "disabled",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "arduino.useArduinoCli": true,
+  "[cpp]": {
+    "editor.wordBasedSuggestions": "off",
+    "editor.suggest.insertMode": "replace",
+    "editor.semanticHighlighting.enabled": true,
+    "editor.quickSuggestions": {
+      "comments": "on",
+      "strings": "on",
+      "other": "on"
+    },
+    "editor.defaultFormatter": "xaver.clang-format"
+  },
+  "prisma.showPrismaDataPlatformNotification": false
+}

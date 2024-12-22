@@ -1,0 +1,49 @@
+#!/bin/bash
+# Script to unzip any kind of file
+
+# Check if filename and output directory are provided as arguments
+if [ $# -lt 2 ]; then
+  echo "Usage: $0 <filename> <output_directory>"
+  exit 1
+fi
+
+# Get the filename and output directory from the arguments
+filename="$1"
+output_dir="$2"
+
+# Check if file exists
+if [ ! -f "$filename" ]; then
+  echo "File $filename not found"
+  exit 1
+fi
+
+# Create the output directory if it doesn't exist
+if [ ! -d "$output_dir" ]; then
+  echo "Creating directory $output_dir"
+  mkdir "$output_dir" || { echo "Failed to create directory $output_dir"; exit 1; }
+fi
+
+# Determine the file type
+filetype=$(file -b "$filename")
+
+# Unzip based on the file type
+case "$filetype" in
+  "RAR archive"*)
+    7z e -y "$filename" -o"$output_dir"
+    ;;
+  "Zip archive"*)
+    unzip "$filename" -d "$output_dir"
+    ;;
+  "gzip compressed"*)
+    tar -xzf "$filename" -C "$output_dir"
+    ;;
+  "bzip2 compressed"*)
+    tar -xjf "$filename" -C "$output_dir"
+    ;;
+  *)
+    echo "Unknown file type: $filetype"
+    exit 1
+    ;;
+esac
+
+echo "Unzipping of $filename completed to $output_dir."
