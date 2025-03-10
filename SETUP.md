@@ -1,0 +1,15 @@
+- install arch linux
+- install basic packages (dawn/install_system.sh)
+- install yay and terminal
+- setup github ssh
+- clone this repo
+- copy everything to ~ (/home/_user_)
+- install xclip/font-size perl scripts
+- reboot
+- install chrome extensions
+- install lxappearance
+- install (AUR) arc-gtk-theme
+- configure dark mode
+- install nvm
+- install plug install
+- install vscode extensions

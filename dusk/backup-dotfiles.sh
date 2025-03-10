@@ -15,7 +15,7 @@ cp ~/.vim/colors/* $BACKUP_DIR/.vim/colors
 mkdir -p $BACKUP_DIR/.config/i3
 mkdir -p $BACKUP_DIR/.config/i3blocks
 cp ~/.config/i3/* $BACKUP_DIR/.config/i3
-cp ~/.config/i3blocks/config $BACKUP_DIR/.config/i3blocks
+cp -r ~/.config/i3blocks/* $BACKUP_DIR/.config/i3blocks
 
 # urxvt
 cp ~/.Xdefaults $BACKUP_DIR
